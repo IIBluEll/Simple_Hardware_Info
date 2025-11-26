@@ -1,4 +1,5 @@
-﻿using SimpleHWInfo.StartProgram;
+﻿using SimpleHWInfo.HW_FullMonitor;
+using SimpleHWInfo.StartProgram;
 
 namespace SimpleHWInfo.Provider
 {
@@ -8,13 +9,14 @@ namespace SimpleHWInfo.Provider
         {
             switch ( mode )
             {
-                case PROGRAM_MODE.FULL_MODE:
+                case PROGRAM_MODE.FULL_SENSOR_MODE:
+
+                    var tHwMonitorForm = new HwFullMonitor_View();
+                    tHwMonitorForm.Show();
                     break;
 
-                case PROGRAM_MODE.SENSOR_ONLY:
-                    break;
+                case PROGRAM_MODE.SIMPLE_SENSOR_MODE:
 
-                case PROGRAM_MODE.INFORMATION_ONLY:
                     break;
             }
         }

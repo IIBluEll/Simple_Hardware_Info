@@ -19,7 +19,7 @@ namespace SimpleHWInfo.StartProgram
             var tMode = _view.SelectedProgramMode;
             _luncherProvider.Launch(tMode);
 
-            _view.Close();
+            _view.Hide();
         }
 
         public void OnGithubLabelClicked(string gitHubLink)

@@ -1,6 +1,6 @@
-﻿namespace SimpleHWInfo.HW_Monitor
+﻿namespace SimpleHWInfo.HW_FullMonitor
 {
-    partial class HwMonitor_View
+    partial class HwFullMonitor_View
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@
             MenuStrip = new MenuStrip();
             helpToolStripMenuItem = new ToolStripMenuItem();
             aboutProgramToolStripMenuItem = new ToolStripMenuItem();
-            HardWareListView = new ListView();
+            hardWareListView = new ListView();
             Sensor = new ColumnHeader();
             Value = new ColumnHeader();
             Max = new ColumnHeader();
@@ -44,7 +44,7 @@
             MenuStrip.Items.AddRange(new ToolStripItem[] { helpToolStripMenuItem });
             MenuStrip.Location = new Point(0 , 0);
             MenuStrip.Name = "MenuStrip";
-            MenuStrip.Size = new Size(800 , 24);
+            MenuStrip.Size = new Size(556 , 24);
             MenuStrip.TabIndex = 1;
             MenuStrip.Text = "menuStrip1";
             // 
@@ -58,22 +58,22 @@
             // aboutProgramToolStripMenuItem
             // 
             aboutProgramToolStripMenuItem.Name = "aboutProgramToolStripMenuItem";
-            aboutProgramToolStripMenuItem.Size = new Size(180 , 22);
+            aboutProgramToolStripMenuItem.Size = new Size(157 , 22);
             aboutProgramToolStripMenuItem.Text = "About Program";
             // 
-            // HardWareListView
+            // hardWareListView
             // 
-            HardWareListView.BackColor = SystemColors.Window;
-            HardWareListView.Columns.AddRange(new ColumnHeader[] { Sensor , Value , Max , Min });
-            HardWareListView.Dock = DockStyle.Fill;
-            HardWareListView.GridLines = true;
-            HardWareListView.Location = new Point(0 , 24);
-            HardWareListView.MultiSelect = false;
-            HardWareListView.Name = "HardWareListView";
-            HardWareListView.Size = new Size(800 , 426);
-            HardWareListView.TabIndex = 2;
-            HardWareListView.UseCompatibleStateImageBehavior = false;
-            HardWareListView.View = View.Details;
+            hardWareListView.BackColor = SystemColors.Window;
+            hardWareListView.Columns.AddRange(new ColumnHeader[] { Sensor , Value , Max , Min });
+            hardWareListView.Dock = DockStyle.Fill;
+            hardWareListView.GridLines = true;
+            hardWareListView.Location = new Point(0 , 24);
+            hardWareListView.MultiSelect = false;
+            hardWareListView.Name = "hardWareListView";
+            hardWareListView.Size = new Size(556 , 937);
+            hardWareListView.TabIndex = 2;
+            hardWareListView.UseCompatibleStateImageBehavior = false;
+            hardWareListView.View = View.Details;
             // 
             // Sensor
             // 
@@ -98,17 +98,17 @@
             Min.TextAlign = HorizontalAlignment.Center;
             Min.Width = 100;
             // 
-            // HwMonitor_View
+            // HwFullMonitor_View
             // 
             AutoScaleDimensions = new SizeF(7F , 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800 , 450);
-            Controls.Add(HardWareListView);
+            ClientSize = new Size(556 , 961);
+            Controls.Add(hardWareListView);
             Controls.Add(MenuStrip);
             Font = new Font("D2Coding" , 9.75F , FontStyle.Regular , GraphicsUnit.Point , 129);
             MainMenuStrip = MenuStrip;
-            Name = "HwMonitor_View";
-            Text = "HwMonitor_View";
+            Name = "HwFullMonitor_View";
+            Text = "HW Full Sensor";
             MenuStrip.ResumeLayout(false);
             MenuStrip.PerformLayout();
             ResumeLayout(false);
@@ -119,7 +119,7 @@
         private MenuStrip MenuStrip;
         private ToolStripMenuItem helpToolStripMenuItem;
         private ToolStripMenuItem aboutProgramToolStripMenuItem;
-        private ListView HardWareListView;
+        private ListView hardWareListView;
         private ColumnHeader Sensor;
         private ColumnHeader Value;
         private ColumnHeader Max;

@@ -2,9 +2,8 @@ namespace SimpleHWInfo.StartProgram
 {
     public enum PROGRAM_MODE
     {
-        FULL_MODE,
-        SENSOR_ONLY,
-        INFORMATION_ONLY
+        FULL_SENSOR_MODE,
+        SIMPLE_SENSOR_MODE,
     }
 
     public partial class StartProgram_View : Form
@@ -18,16 +17,13 @@ namespace SimpleHWInfo.StartProgram
                 switch ( modeComboBox.SelectedIndex )
                 {
                     case 0:
-                        return PROGRAM_MODE.FULL_MODE;
+                        return PROGRAM_MODE.FULL_SENSOR_MODE;
 
                     case 1:
-                        return PROGRAM_MODE.SENSOR_ONLY;
-
-                    case 2:
-                        return PROGRAM_MODE.INFORMATION_ONLY;
+                        return PROGRAM_MODE.SIMPLE_SENSOR_MODE;
 
                     default:
-                        return PROGRAM_MODE.FULL_MODE;
+                        return PROGRAM_MODE.FULL_SENSOR_MODE;
                 }
             }
         }

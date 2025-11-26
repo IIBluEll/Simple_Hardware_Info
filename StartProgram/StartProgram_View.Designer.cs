@@ -107,7 +107,7 @@
             modeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             modeComboBox.Font = new Font("D2Coding" , 11.25F , FontStyle.Bold , GraphicsUnit.Point , 129);
             modeComboBox.FormattingEnabled = true;
-            modeComboBox.Items.AddRange(new object[] { "Full Mode" , "Sensor Only" , "Information Only" });
+            modeComboBox.Items.AddRange(new object[] { "Full Sensor Mode" , "Simple Sensor Mode" });
             modeComboBox.Location = new Point(80 , 90);
             modeComboBox.Name = "modeComboBox";
             modeComboBox.Size = new Size(192 , 26);
