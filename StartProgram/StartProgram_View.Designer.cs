@@ -35,7 +35,6 @@
             StartBtn = new Button();
             label3 = new Label();
             modeComboBox = new ComboBox();
-            SettingBtn = new Button();
             ( (System.ComponentModel.ISupportInitialize)pictureBox1 ).BeginInit();
             SuspendLayout();
             // 
@@ -113,22 +112,11 @@
             modeComboBox.Size = new Size(192 , 26);
             modeComboBox.TabIndex = 6;
             // 
-            // SettingBtn
-            // 
-            SettingBtn.Font = new Font("D2Coding" , 14.2499981F , FontStyle.Bold);
-            SettingBtn.Location = new Point(80 , 169);
-            SettingBtn.Name = "SettingBtn";
-            SettingBtn.Size = new Size(192 , 41);
-            SettingBtn.TabIndex = 7;
-            SettingBtn.Text = "Setting";
-            SettingBtn.UseVisualStyleBackColor = true;
-            // 
             // StartProgram_View
             // 
             AutoScaleDimensions = new SizeF(7F , 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(336 , 253);
-            Controls.Add(SettingBtn);
             Controls.Add(modeComboBox);
             Controls.Add(label3);
             Controls.Add(StartBtn);
@@ -157,6 +145,5 @@
         private Button StartBtn;
         private Label label3;
         private ComboBox modeComboBox;
-        private Button SettingBtn;
     }
 }

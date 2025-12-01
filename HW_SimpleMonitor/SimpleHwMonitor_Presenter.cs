@@ -9,6 +9,8 @@ namespace SimpleHWInfo.HW_SimpleMonitor
         private readonly SImpleHwMonitor_View _view;
         private readonly System.Windows.Forms.Timer _timer;
 
+        private bool _isReadHWOnce = false;
+
         public SimpleHwMonitor_Presenter(SImpleHwMonitor_View view)
         {
             _view = view;
@@ -91,6 +93,23 @@ namespace SimpleHWInfo.HW_SimpleMonitor
                 var tGpuInfo = MakeSimpleHwInfo(tGpuNode);
                 _view.SetGpuInfo(tGpuInfo);
             }
+
+            if(!_isReadHWOnce)
+            {
+                if ( tCpuNode != null )
+                {
+                    var tCpuBrand = GetCpuBrand(tCpuNode);
+                    _view.SetCpuBrandIcon(tCpuBrand);
+                }
+
+                if ( tGpuNode != null )
+                {
+                    var tGpuBrand = GetGpuBrand(tGpuNode);
+                    _view.SetGpuBrandIcon(tGpuBrand);
+                }
+            }
+
+            _isReadHWOnce = true;
         }
 
         private SimpleHwMonitor_Model MakeSimpleHwInfo(HardwareNode_model hwNode)
@@ -169,6 +188,51 @@ namespace SimpleHWInfo.HW_SimpleMonitor
             }
 
             return tList_Usage.Average(s => s.Value!.Value);
+        }
+
+        private CpuBrand GetCpuBrand(HardwareNode_model cpuNode)
+        {
+            if ( cpuNode == null || string.IsNullOrWhiteSpace(cpuNode.Name) )
+            {
+                return CpuBrand.Unknown;
+            }
+
+            string tNameUpper = cpuNode.Name.ToUpperInvariant();
+
+            if ( tNameUpper.Contains("INTEL") )
+            {
+                return CpuBrand.Intel;
+            }
+
+            if ( tNameUpper.Contains("AMD") || tNameUpper.Contains("RYZEN") )
+            {
+                return CpuBrand.Amd;
+            }
+
+            return CpuBrand.Unknown;
+        }
+
+        private GpuBrand GetGpuBrand(HardwareNode_model gpuNode)
+        {
+            if ( gpuNode == null )
+            {
+                return GpuBrand.Unknown;
+            }
+
+            switch ( gpuNode.HardwareType )
+            {
+                case HardwareType.GpuNvidia:
+                    return GpuBrand.Nvidia;
+
+                case HardwareType.GpuAmd:
+                    return GpuBrand.Amd;
+
+                case HardwareType.GpuIntel:
+                    return GpuBrand.Intel;
+
+                default:
+                    return GpuBrand.Unknown;
+            }
         }
 
         public void Dispose()

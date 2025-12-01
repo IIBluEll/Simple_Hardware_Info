@@ -31,7 +31,7 @@
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             cpuGroup = new GroupBox();
-            pictureBox1 = new PictureBox();
+            cpuPictureBox = new PictureBox();
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
@@ -47,7 +47,7 @@
             label1 = new Label();
             tabPage2 = new TabPage();
             gpuGroup = new GroupBox();
-            pictureBox2 = new PictureBox();
+            gpuPictureBox = new PictureBox();
             label8 = new Label();
             label9 = new Label();
             label10 = new Label();
@@ -64,10 +64,10 @@
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             cpuGroup.SuspendLayout();
-            ( (System.ComponentModel.ISupportInitialize)pictureBox1 ).BeginInit();
+            ( (System.ComponentModel.ISupportInitialize)cpuPictureBox ).BeginInit();
             tabPage2.SuspendLayout();
             gpuGroup.SuspendLayout();
-            ( (System.ComponentModel.ISupportInitialize)pictureBox2 ).BeginInit();
+            ( (System.ComponentModel.ISupportInitialize)gpuPictureBox ).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -78,7 +78,7 @@
             tabControl1.Location = new Point(0 , 0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(643 , 265);
+            tabControl1.Size = new Size(598 , 230);
             tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -94,7 +94,7 @@
             // 
             // cpuGroup
             // 
-            cpuGroup.Controls.Add(pictureBox1);
+            cpuGroup.Controls.Add(cpuPictureBox);
             cpuGroup.Controls.Add(label7);
             cpuGroup.Controls.Add(label6);
             cpuGroup.Controls.Add(label5);
@@ -116,13 +116,13 @@
             cpuGroup.TabStop = false;
             cpuGroup.Text = "Simple Info";
             // 
-            // pictureBox1
+            // cpuPictureBox
             // 
-            pictureBox1.Location = new Point(423 , 29);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(131 , 140);
-            pictureBox1.TabIndex = 2;
-            pictureBox1.TabStop = false;
+            cpuPictureBox.Location = new Point(423 , 29);
+            cpuPictureBox.Name = "cpuPictureBox";
+            cpuPictureBox.Size = new Size(131 , 140);
+            cpuPictureBox.TabIndex = 2;
+            cpuPictureBox.TabStop = false;
             // 
             // label7
             // 
@@ -263,13 +263,13 @@
             tabPage2.Location = new Point(4 , 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(635 , 237);
+            tabPage2.Size = new Size(590 , 202);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "GPU";
             // 
             // gpuGroup
             // 
-            gpuGroup.Controls.Add(pictureBox2);
+            gpuGroup.Controls.Add(gpuPictureBox);
             gpuGroup.Controls.Add(label8);
             gpuGroup.Controls.Add(label9);
             gpuGroup.Controls.Add(label10);
@@ -291,13 +291,13 @@
             gpuGroup.TabStop = false;
             gpuGroup.Text = "Simple Info";
             // 
-            // pictureBox2
+            // gpuPictureBox
             // 
-            pictureBox2.Location = new Point(423 , 29);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(131 , 140);
-            pictureBox2.TabIndex = 2;
-            pictureBox2.TabStop = false;
+            gpuPictureBox.Location = new Point(423 , 29);
+            gpuPictureBox.Name = "gpuPictureBox";
+            gpuPictureBox.Size = new Size(131 , 140);
+            gpuPictureBox.TabIndex = 2;
+            gpuPictureBox.TabStop = false;
             // 
             // label8
             // 
@@ -433,7 +433,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F , 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(643 , 265);
+            ClientSize = new Size(598 , 230);
             Controls.Add(tabControl1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
@@ -444,11 +444,11 @@
             tabPage1.ResumeLayout(false);
             cpuGroup.ResumeLayout(false);
             cpuGroup.PerformLayout();
-            ( (System.ComponentModel.ISupportInitialize)pictureBox1 ).EndInit();
+            ( (System.ComponentModel.ISupportInitialize)cpuPictureBox ).EndInit();
             tabPage2.ResumeLayout(false);
             gpuGroup.ResumeLayout(false);
             gpuGroup.PerformLayout();
-            ( (System.ComponentModel.ISupportInitialize)pictureBox2 ).EndInit();
+            ( (System.ComponentModel.ISupportInitialize)gpuPictureBox ).EndInit();
             ResumeLayout(false);
         }
 
@@ -471,9 +471,9 @@
         private Label label4;
         private TextBox cpuTempLabel;
         private Label label3;
-        private PictureBox pictureBox1;
+        private PictureBox cpuPictureBox;
         private GroupBox gpuGroup;
-        private PictureBox pictureBox2;
+        private PictureBox gpuPictureBox;
         private Label label8;
         private Label label9;
         private Label label10;

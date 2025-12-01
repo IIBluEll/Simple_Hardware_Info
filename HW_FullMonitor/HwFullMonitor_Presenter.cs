@@ -253,5 +253,11 @@ namespace SimpleHWInfo.HW_FullMonitor
 
             return $"{value.Value:F2}{tUnit}";
         }
+
+        public void Dispose()
+        {
+            _view.RefreshTimer.Stop();
+            _view.RefreshTimer.Dispose();
+        }
     }
 }
