@@ -1,4 +1,5 @@
 ﻿using LibreHardwareMonitor.Hardware;
+using SimpleHWInfo.LoadingView;
 using SimpleHWInfo.Provider;
 
 namespace SimpleHWInfo.HW_SimpleMonitor
@@ -15,7 +16,44 @@ namespace SimpleHWInfo.HW_SimpleMonitor
             _timer = new System.Windows.Forms.Timer();
             _timer.Interval = 1000;
             _timer.Tick += async (s , e) => await OnTick_async();
-            _timer.Start();
+        }
+
+        public async Task InitView_async()
+        {
+            using(var tLoading = new Loading_View())
+            {
+                tLoading.StartPosition = FormStartPosition.CenterParent;
+                tLoading.Show(_view);
+                tLoading.Refresh();
+
+                HardwareRawSnapshot_model tSnap;
+
+                try
+                {
+                    tSnap = await Task.Run(() =>
+                    {
+                        return HardwareMonitorProvider.Instance.GetRawSnapshot();
+                    });
+                }
+                catch ( Exception ex )
+                {
+                    tLoading.Close();
+
+                    MessageBox.Show
+                    (
+                        _view ,
+                        "하드웨어 정보를 불러오는 중 오류가 발생했습니다.\r\n" + ex.Message ,
+                        "오류" ,
+                        MessageBoxButtons.OK ,
+                        MessageBoxIcon.Error
+                    );
+
+                    return;
+                }
+
+                tLoading.Close();
+                _timer.Start();
+            }
         }
 
         private async Task OnTick_async()
@@ -27,7 +65,20 @@ namespace SimpleHWInfo.HW_SimpleMonitor
 
             var tCpuNode = tSanp.list_Hardwares.FirstOrDefault(h => h.HardwareType == HardwareType.Cpu);
 
-            var tGpuNode = tSanp.list_Hardwares.FirstOrDefault(h => h.HardwareType == HardwareType.GpuNvidia || h.HardwareType == HardwareType.GpuAmd || h.HardwareType == HardwareType.GpuNvidia);
+            var tlist_GpuNodes = tSanp.list_Hardwares.Where(h=> h.HardwareType == HardwareType.GpuNvidia || h.HardwareType == HardwareType.GpuAmd || h.HardwareType == HardwareType.GpuIntel).ToList();
+
+            HardwareNode_model tGpuNode;
+
+            if(tlist_GpuNodes.Count >= 2 )
+            {
+                tGpuNode = tlist_GpuNodes[1];
+            }
+            else
+            {
+                tGpuNode = tlist_GpuNodes.First();
+            }
+
+                //var tGpuNode = tSanp.list_Hardwares.FirstOrDefault(h => h.HardwareType == HardwareType.GpuNvidia || h.HardwareType == HardwareType.GpuAmd || h.HardwareType == HardwareType.GpuNvidia);
 
             if(tCpuNode != null)
             {

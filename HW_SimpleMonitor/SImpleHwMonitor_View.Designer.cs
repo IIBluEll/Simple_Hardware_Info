@@ -160,7 +160,6 @@
             cpuUsageProgress.Name = "cpuUsageProgress";
             cpuUsageProgress.Size = new Size(257 , 25);
             cpuUsageProgress.TabIndex = 12;
-            cpuUsageProgress.Value = 79;
             // 
             // cpuTempProgress
             // 
@@ -169,7 +168,6 @@
             cpuTempProgress.Name = "cpuTempProgress";
             cpuTempProgress.Size = new Size(257 , 25);
             cpuTempProgress.TabIndex = 11;
-            cpuTempProgress.Value = 50;
             // 
             // cpuUsageLabel
             // 
@@ -181,7 +179,6 @@
             cpuUsageLabel.Name = "cpuUsageLabel";
             cpuUsageLabel.Size = new Size(53 , 25);
             cpuUsageLabel.TabIndex = 9;
-            cpuUsageLabel.Text = "88";
             cpuUsageLabel.TextAlign = HorizontalAlignment.Center;
             // 
             // label4
@@ -204,7 +201,6 @@
             cpuTempLabel.Name = "cpuTempLabel";
             cpuTempLabel.Size = new Size(53 , 25);
             cpuTempLabel.TabIndex = 7;
-            cpuTempLabel.Text = "60";
             cpuTempLabel.TextAlign = HorizontalAlignment.Center;
             // 
             // label3
@@ -227,7 +223,6 @@
             cpuClockLabel.Name = "cpuClockLabel";
             cpuClockLabel.Size = new Size(53 , 25);
             cpuClockLabel.TabIndex = 5;
-            cpuClockLabel.Text = "3000";
             cpuClockLabel.TextAlign = HorizontalAlignment.Center;
             // 
             // label2
@@ -250,7 +245,6 @@
             cpuNameLabel.Name = "cpuNameLabel";
             cpuNameLabel.Size = new Size(338 , 20);
             cpuNameLabel.TabIndex = 3;
-            cpuNameLabel.Text = "Intel 14900K";
             // 
             // label1
             // 
@@ -341,7 +335,6 @@
             gpuUsageProgress.Name = "gpuUsageProgress";
             gpuUsageProgress.Size = new Size(257 , 25);
             gpuUsageProgress.TabIndex = 12;
-            gpuUsageProgress.Value = 79;
             // 
             // gpuTempProgress
             // 
@@ -350,7 +343,6 @@
             gpuTempProgress.Name = "gpuTempProgress";
             gpuTempProgress.Size = new Size(257 , 25);
             gpuTempProgress.TabIndex = 11;
-            gpuTempProgress.Value = 50;
             // 
             // gpuUsageLabel
             // 
@@ -362,7 +354,6 @@
             gpuUsageLabel.Name = "gpuUsageLabel";
             gpuUsageLabel.Size = new Size(53 , 25);
             gpuUsageLabel.TabIndex = 9;
-            gpuUsageLabel.Text = "88";
             // 
             // label11
             // 
@@ -384,7 +375,6 @@
             gpuTempLabel.Name = "gpuTempLabel";
             gpuTempLabel.Size = new Size(53 , 25);
             gpuTempLabel.TabIndex = 7;
-            gpuTempLabel.Text = "60";
             // 
             // label12
             // 
@@ -406,7 +396,7 @@
             gpuClockLabel.Name = "gpuClockLabel";
             gpuClockLabel.Size = new Size(53 , 25);
             gpuClockLabel.TabIndex = 5;
-            gpuClockLabel.Text = "3000";
+            gpuClockLabel.TextChanged +=  gpuClockLabel_TextChanged ;
             // 
             // label13
             // 
@@ -428,7 +418,6 @@
             gpuNameLabel.Name = "gpuNameLabel";
             gpuNameLabel.Size = new Size(338 , 20);
             gpuNameLabel.TabIndex = 3;
-            gpuNameLabel.Text = "Intel 14900K";
             // 
             // label14
             // 

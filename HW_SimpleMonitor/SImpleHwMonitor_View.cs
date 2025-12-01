@@ -17,6 +17,13 @@
             gpuGroup.Text = "GPU Simple Info";
 
             _presenter = new SimpleHwMonitor_Presenter(this);
+
+            Shown += SImpleHwMonitor_View_Shown;
+        }
+
+        private async void SImpleHwMonitor_View_Shown(object? sender , EventArgs e)
+        {
+            await _presenter.InitView_async();
         }
 
         protected override void OnFormClosed(FormClosedEventArgs e)
@@ -77,6 +84,11 @@
             }
 
             return tVal;
+        }
+
+        private void gpuClockLabel_TextChanged(object sender , EventArgs e)
+        {
+
         }
     }
 }
