@@ -1,11 +1,14 @@
-﻿using Timer = System.Windows.Forms.Timer;
+﻿using SimpleHWInfo.LoadingView;
+using SimpleHWInfo.Provider;
+using System.Windows.Forms;
+using Timer = System.Windows.Forms.Timer;
 
 namespace SimpleHWInfo.HW_FullMonitor
 {
     public partial class HwFullMonitor_View : Form
     {
         private readonly HwFullMonitor_Presenter _presenter;
-        private Timer _refreshTimer;
+        public Timer RefreshTimer;
 
         public ListView HardWareListView => hardWareListView;
 
@@ -22,16 +25,22 @@ namespace SimpleHWInfo.HW_FullMonitor
             hardWareListView.HideSelection = false;
 
             // 타이머 설정
-            _refreshTimer = new Timer();
-            _refreshTimer.Interval = 1000;
-            _refreshTimer.Tick += RefreshTimer_Tick;
-            _refreshTimer.Start();
+            RefreshTimer = new Timer();
+            RefreshTimer.Interval = 1000;
+            RefreshTimer.Tick += RefreshTimer_Tick;
+
+            Shown += HwFullMonitor_View_Shown;
+        }
+
+        private async void HwFullMonitor_View_Shown(object? sender , EventArgs e)
+        {
+            await _presenter.LoadingStart_async();
         }
 
         private async void RefreshTimer_Tick(object sender , EventArgs e)
         {
             // 이전 Tick이 아직 끝나지 않았는데 다시 진입하는 것 방지
-            _refreshTimer.Enabled = false;
+            RefreshTimer.Enabled = false;
 
             try
             {
@@ -39,7 +48,7 @@ namespace SimpleHWInfo.HW_FullMonitor
             }
             finally
             {
-                _refreshTimer.Enabled = true;
+                RefreshTimer.Enabled = true;
             }
         }
     }

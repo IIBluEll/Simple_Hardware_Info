@@ -1,4 +1,5 @@
 ﻿using LibreHardwareMonitor.Hardware;
+using SimpleHWInfo.LoadingView;
 using SimpleHWInfo.Provider;
 
 namespace SimpleHWInfo.HW_FullMonitor
@@ -16,6 +17,44 @@ namespace SimpleHWInfo.HW_FullMonitor
         public HwFullMonitor_Presenter(HwFullMonitor_View view)
         {
             _view = view;
+        }
+
+        public async Task LoadingStart_async()
+        {
+            using ( var tLoading = new Loading_View() )
+            {
+                tLoading.StartPosition = FormStartPosition.CenterParent;
+                tLoading.Show(_view);
+                tLoading.Refresh();
+
+                HardwareRawSnapshot_model tSnap;
+
+                try
+                {
+                    tSnap = await Task.Run(() =>
+                    {
+                        return HardwareMonitorProvider.Instance.GetRawSnapshot();
+                    });
+                }
+                catch ( Exception ex )
+                {
+                    tLoading.Close();
+
+                    MessageBox.Show
+                    (
+                        _view ,
+                        "하드웨어 정보를 불러오는 중 오류가 발생했습니다.\r\n" + ex.Message ,
+                        "오류" ,
+                        MessageBoxButtons.OK ,
+                        MessageBoxIcon.Error
+                    );
+
+                    return;
+                }
+
+                tLoading.Close();
+                _view.RefreshTimer.Start();
+            }
         }
 
         public async Task RefreshSensor_async()
