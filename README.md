@@ -93,3 +93,9 @@ SimpleHWInfo는 다음과 같은 목적을 가지고 있습니다.
 - **View 계층 (`*_View` Form)**
   - WinForm 컨트롤 및 화면 표시를 담당합니다.
   - 로직 및 데이터 처리는 Presenter에서만 수행하고, View는 UI 표시와 이벤트만 처리합니다.
+  
+  ---
+  ## 4. TO-DO List
+  - 영어 / 한글 지원 예정
+  - Setting 버튼을 통해 다양한 설정 지원 예정
+  - SimpleSensor 모드에서 SSD / HDD / Ram 추가 예정
