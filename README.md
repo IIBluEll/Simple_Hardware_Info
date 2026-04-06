@@ -99,3 +99,57 @@ SimpleHWInfo는 다음과 같은 목적을 가지고 있습니다.
   - 영어 / 한글 지원 예정
   - Setting 버튼을 통해 다양한 설정 지원 예정
   - SimpleSensor 모드에서 SSD / HDD / Ram 추가 예정
+
+---
+## 5. 아키텍처 다이어그램
+
+본 프로젝트는 UI 로직과 데이터 수집 로직을 분리하기 위해 **MVP (Model-View-Presenter)** 패턴과 **Provider** 기반 구조를 채택했습니다.
+
+```mermaid
+graph TD
+    subgraph View Layer [View 계층]
+        V1[StartProgram_View]
+        V2[HwFullMonitor_View]
+        V3[SimpleHwMonitor_View]
+        VL[Loading_View]
+    end
+
+    subgraph Presenter Layer [Presenter 계층]
+        P1[StartProgram_Presenter]
+        P2[HwFullMonitor_Presenter]
+        P3[SimpleHwMonitor_Presenter]
+    end
+
+    subgraph Provider Layer [Provider & Data 계층]
+        LP[ProgramLuncherProvider]
+        HP[HardwareMonitorProvider <br/>(Singleton)]
+        LHM[(LibreHardwareMonitor)]
+    end
+
+    %% MVP Interactions
+    V1 <-->|User Event / UI Update| P1
+    V2 <-->|User Event / UI Update| P2
+    V3 <-->|User Event / UI Update| P3
+
+    %% Presenter to View (Loading)
+    P2 -.->|Show/Hide| VL
+    P3 -.->|Show/Hide| VL
+
+    %% Start Program Flow
+    P1 -->|Launch Request| LP
+    LP -->|Create & Show| V2
+    LP -->|Create & Show| V3
+
+    %% Data Flow
+    P2 -->|Async Request Snapshot| HP
+    P3 -->|Async Request Snapshot| HP
+    HP -->|Read Hardware Sensors| LHM
+
+    classDef view fill:#f9f9f9,stroke:#333,stroke-width:2px;
+    classDef presenter fill:#e1f5fe,stroke:#0288d1,stroke-width:2px;
+    classDef provider fill:#e8f5e9,stroke:#388e3c,stroke-width:2px;
+
+    class V1,V2,V3,VL view;
+    class P1,P2,P3 presenter;
+    class LP,HP,LHM provider;
+```
