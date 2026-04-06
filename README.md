@@ -122,7 +122,7 @@ graph TD
 
     subgraph Provider Layer [Provider & Data 계층]
         LP[ProgramLuncherProvider]
-        HP[HardwareMonitorProvider <br/>(Singleton)]
+        HP["HardwareMonitorProvider <br/>(Singleton)"]
         LHM[(LibreHardwareMonitor)]
     end
 
